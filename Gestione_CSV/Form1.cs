@@ -20,7 +20,7 @@ namespace Gestione_CSV
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+            
         }
 
         // Carica il file CSV
