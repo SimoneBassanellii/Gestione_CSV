@@ -28,13 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Aggiunta_mio_valore = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // Aggiunta_mio_valore
+            // 
+            this.Aggiunta_mio_valore.Location = new System.Drawing.Point(38, 34);
+            this.Aggiunta_mio_valore.Name = "Aggiunta_mio_valore";
+            this.Aggiunta_mio_valore.Size = new System.Drawing.Size(114, 32);
+            this.Aggiunta_mio_valore.TabIndex = 0;
+            this.Aggiunta_mio_valore.Text = "Aggiunta mio valore";
+            this.Aggiunta_mio_valore.UseVisualStyleBackColor = true;
+            this.Aggiunta_mio_valore.Click += new System.EventHandler(this.Aggiunta_mio_valore_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Aggiunta_mio_valore);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -43,6 +55,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button Aggiunta_mio_valore;
     }
 }
 

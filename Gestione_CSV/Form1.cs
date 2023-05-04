@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Gestione_CSV
 {
@@ -19,7 +20,18 @@ namespace Gestione_CSV
 
         private void Form1_Load(object sender, EventArgs e)
         {
-             
+           
+        }
+
+        // Carica il file CSV
+        public string FileName = "@bassanelli.csv";
+        StreamWriter writer = new StreamWriter(FileName, append: false);
+
+        Random rnd = new Random();
+
+        private void Aggiunta_mio_valore_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
