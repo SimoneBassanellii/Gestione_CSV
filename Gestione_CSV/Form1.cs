@@ -16,6 +16,7 @@ namespace Gestione_CSV
         public Form1()
         {
             InitializeComponent();
+            FileName = Path.GetFullPath("..//..//bassanelli.csv"); //torna indietro di due
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -24,7 +25,7 @@ namespace Gestione_CSV
         }
 
         // Carica il file CSV
-        public string FileName = @"bassanelli.csv";
+        public string FileName;
 
         Random rnd = new Random();
 
