@@ -16,16 +16,15 @@ namespace Gestione_CSV
         public Form1()
         {
             InitializeComponent();
-            FileName = Path.GetFullPath("..//..//bassanelli.csv"); //torna indietro di due
+           
         }
+
+        public string FileName = @"bassanelli.csv";
 
         private void Form1_Load(object sender, EventArgs e)
         {
             
         }
-
-        // Carica il file CSV
-        public string FileName;
 
         Random rnd = new Random();
 
@@ -42,6 +41,30 @@ namespace Gestione_CSV
                 writer.WriteLine(lines[i] + ";" + rnd.Next(10,21)+";0");
             }
             writer.Close();
+        }
+
+
+
+        private void BNCam_Click(object sender, EventArgs e)
+        {
+            ContaCampi();
+        }
+
+        public void ContaCampi()
+        {
+            listView1.Clear();
+            using (StreamReader sr = new StreamReader(FileName))
+            {
+                int n = 0;
+                string a = sr.ReadLine();
+                string[] campi = a.Split(';');
+                for (int i = 0; i < campi.Length; i++)
+                {
+                    n++;
+                }
+
+                listView1.Items.Add(n.ToString());
+            }
         }
     }
 }
