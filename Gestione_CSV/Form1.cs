@@ -28,6 +28,37 @@ namespace Gestione_CSV
 
         Random rnd = new Random();
 
+
+
+        #region visulizzare il file CSV in una listview
+        public void VisualizzaCSV()
+        {
+            listView1.Clear();
+            using (StreamReader sr = new StreamReader(FileName))
+            {
+                string a = sr.ReadLine();
+                string[] campi = a.Split(';');
+                for (int i = 0; i < campi.Length; i++)
+                {
+                    listView1.Columns.Add(campi[i]);
+                }
+                while (sr.Peek() != -1)
+                {
+                    string b = sr.ReadLine();
+                    string[] campi2 = b.Split(';');
+                    ListViewItem item = new ListViewItem(campi2);
+                    listView1.Items.Add(item);
+                }
+            }
+        }
+
+        private void Visualizza_Click(object sender, EventArgs e)
+        {
+            VisualizzaCSV();
+        }
+        #endregion
+
+        #region Funzione 1 
         private void Aggiunta_mio_valore_Click(object sender, EventArgs e)
         {
             //StreamReader sr = new StreamReader(FileName);
@@ -43,8 +74,9 @@ namespace Gestione_CSV
             }
             writer.Close();
         }
+        #endregion
 
-
+        #region Funzione 2
 
         private void BNCam_Click(object sender, EventArgs e)
         {
@@ -68,6 +100,9 @@ namespace Gestione_CSV
             }
         }
 
+        #endregion
+
+        #region Funzione 3
         public void Lunghezzamassimacampi()
         {
             int max = 0;
@@ -90,6 +125,7 @@ namespace Gestione_CSV
         {
             Lunghezzamassimacampi();
         }
+        #endregion
         /*
         public void RicercaElemento()
         {
@@ -118,8 +154,8 @@ namespace Gestione_CSV
             InserimentoSpazi();
         }
 
-        //Visualizzare dei dati mostrando tre campi significativi a scelta;
-        public void VisualizzaDati()
+        //Visualizzare dei dati mostrando tre campi significativi a scelta comune provincia e identificatore nella view list;ù
+        public void VisualizzaDatiSignificativi()
         {
             listView1.Clear();
             using (StreamReader sr = new StreamReader(FileName))
@@ -134,7 +170,9 @@ namespace Gestione_CSV
                 {
                     string b = sr.ReadLine();
                     string[] campi2 = b.Split(';');
-                    ListViewItem item = new ListViewItem(campi2);
+                    ListViewItem item = new ListViewItem(campi2[0]);
+                    item.SubItems.Add(campi2[2]);
+                    item.SubItems.Add(campi2[6]);
                     listView1.Items.Add(item);
                 }
             }
@@ -142,37 +180,7 @@ namespace Gestione_CSV
 
         private void Significativi_Click(object sender, EventArgs e)
         {
-            VisualizzaDati();
-        }
-
-        public void VisualizzaCSV()
-        {
-            listView1.Clear();
-            using (StreamReader sr = new StreamReader(FileName))
-            {
-                string a = sr.ReadLine();
-                string[] campi = a.Split(';');
-                for (int i = 0; i < campi.Length; i++)
-                {
-                    listView1.Columns.Add(campi[i]);
-                }
-                while (sr.Peek() != -1)
-                {
-                    string b = sr.ReadLine();
-                    string[] campi2 = b.Split(';');
-                    ListViewItem item = new ListViewItem(campi2);
-                    listView1.Items.Add(item);
-                }
-            }
-        }
-        
-
-
-
-
-        private void Visualizza_Click(object sender, EventArgs e)
-        {
-            VisualizzaCSV();
+            VisualizzaDatiSignificativi();
         }
     }
 }
