@@ -16,14 +16,14 @@ namespace Gestione_CSV
         public Form1()
         {
             InitializeComponent();
-           
+
         }
 
         public string FileName = @"../../bassanelli.csv";
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         Random rnd = new Random();
@@ -33,13 +33,13 @@ namespace Gestione_CSV
             //StreamReader sr = new StreamReader(FileName);
             //string vs = sr.ReadLine();
             string[] lines = File.ReadAllLines(FileName);
-           
-            
+
+
             StreamWriter writer = new StreamWriter(FileName);
             writer.WriteLine(lines[0] + ";" + "Mio valore");
             for (int i = 0; i < lines.Length; i++)
             {
-                writer.WriteLine(lines[i] + ";" + rnd.Next(10,21)+";0");
+                writer.WriteLine(lines[i] + ";" + rnd.Next(10, 21)+";0");
             }
             writer.Close();
         }
@@ -67,7 +67,7 @@ namespace Gestione_CSV
                 MessageBox.Show("Il numero di campi è " + (n.ToString()));
             }
         }
-        
+
         public void Lunghezzamassimacampi()
         {
             int max = 0;
@@ -89,6 +89,90 @@ namespace Gestione_CSV
         private void Lunghezzacampi_Click(object sender, EventArgs e)
         {
             Lunghezzamassimacampi();
+        }
+        /*
+        public void RicercaElemento()
+        {
+            string elemento = textBox1.Text;
+            using (StreamReader sr = new StreamReader(FileName))
+            {
+                string a = sr.ReadLine();
+                string[] campi = a.Split(';');
+                for (int i = 0; i < campi.Length; i++)
+                {
+                    if (campi[i] == elemento)
+                    {
+                        MessageBox.Show("L'elemento è stato trovato");
+                    }
+                }
+            }
+        }
+        */
+        public void InserimentoSpazi()
+        {
+            
+        }
+
+        private void Dimfissa_Click(object sender, EventArgs e)
+        {
+            InserimentoSpazi();
+        }
+
+        //Visualizzare dei dati mostrando tre campi significativi a scelta;
+        public void VisualizzaDati()
+        {
+            listView1.Clear();
+            using (StreamReader sr = new StreamReader(FileName))
+            {
+                string a = sr.ReadLine();
+                string[] campi = a.Split(';');
+                for (int i = 0; i < campi.Length; i++)
+                {
+                    listView1.Columns.Add(campi[i]);
+                }
+                while (sr.Peek() != -1)
+                {
+                    string b = sr.ReadLine();
+                    string[] campi2 = b.Split(';');
+                    ListViewItem item = new ListViewItem(campi2);
+                    listView1.Items.Add(item);
+                }
+            }
+        }
+
+        private void Significativi_Click(object sender, EventArgs e)
+        {
+            VisualizzaDati();
+        }
+
+        public void VisualizzaCSV()
+        {
+            listView1.Clear();
+            using (StreamReader sr = new StreamReader(FileName))
+            {
+                string a = sr.ReadLine();
+                string[] campi = a.Split(';');
+                for (int i = 0; i < campi.Length; i++)
+                {
+                    listView1.Columns.Add(campi[i]);
+                }
+                while (sr.Peek() != -1)
+                {
+                    string b = sr.ReadLine();
+                    string[] campi2 = b.Split(';');
+                    ListViewItem item = new ListViewItem(campi2);
+                    listView1.Items.Add(item);
+                }
+            }
+        }
+        
+
+
+
+
+        private void Visualizza_Click(object sender, EventArgs e)
+        {
+            VisualizzaCSV();
         }
     }
 }
