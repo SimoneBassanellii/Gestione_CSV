@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Security.Policy;
 
 namespace Gestione_CSV
 {
@@ -106,6 +107,7 @@ namespace Gestione_CSV
         public void Lunghezzamassimacampi()
         {
             int max = 0;
+            listView1.Clear();
             using (StreamReader sr = new StreamReader(FileName))
             {
                 string a = sr.ReadLine();
@@ -144,16 +146,45 @@ namespace Gestione_CSV
             }
         }
         */
-        public void InserimentoSpazi()
+
+
+        //funzione per rendere la dimensione delle righe fissa andando a modificare il file originale inserendo dei punti per pareggiare la lunghezza, la lunghezza delle righe è data dalla riga più lnga nel file csv
+        #region Funzione 4
+        public int LunghezzaMassimaRiga()
         {
-            
+            int max = 0;
+            using (StreamReader sr = new StreamReader(FileName))
+            {
+                while (sr.Peek() != -1)
+                {
+                    string a = sr.ReadLine();
+                    string[] campi = a.Split(';');
+                    for (int i = 0; i < campi.Length; i++)
+                    {
+                        if (campi[i].Length > max)
+                        {
+                            max = campi[i].Length;
+                        }
+                    }
+                }
+            }
+            return max;
         }
+        
+
+
+
+
+
+
 
         private void Dimfissa_Click(object sender, EventArgs e)
         {
-            InserimentoSpazi();
+            LunghezzaMassimaRiga();       
         }
+        #endregion
 
+        #region Funzione 6
         //Visualizzare dei dati mostrando tre campi significativi a scelta comune provincia e identificatore nella view list;ù
         public void VisualizzaDatiSignificativi()
         {
@@ -182,5 +213,6 @@ namespace Gestione_CSV
         {
             VisualizzaDatiSignificativi();
         }
+        #endregion
     }
 }
