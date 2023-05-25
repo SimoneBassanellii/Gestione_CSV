@@ -19,7 +19,7 @@ namespace Gestione_CSV
            
         }
 
-        public string FileName = @"bassanelli.csv";
+        public string FileName = @"../../bassanelli.csv";
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -36,6 +36,7 @@ namespace Gestione_CSV
            
             
             StreamWriter writer = new StreamWriter(FileName);
+            writer.WriteLine(lines[0] + ";" + "Mio valore");
             for (int i = 0; i < lines.Length; i++)
             {
                 writer.WriteLine(lines[i] + ";" + rnd.Next(10,21)+";0");
@@ -63,8 +64,31 @@ namespace Gestione_CSV
                     n++;
                 }
 
-                listView1.Items.Add(n.ToString());
+                MessageBox.Show("Il numero di campi è " + (n.ToString()));
             }
+        }
+        
+        public void Lunghezzamassimacampi()
+        {
+            int max = 0;
+            using (StreamReader sr = new StreamReader(FileName))
+            {
+                string a = sr.ReadLine();
+                string[] campi = a.Split(';');
+                for (int i = 0; i < campi.Length; i++)
+                {
+                    if (campi[i].Length > max)
+                    {
+                        max = campi[i].Length;
+                    }
+                }
+                MessageBox.Show("La lunghezza massima dei campi è " + (max.ToString()));
+            }
+        }
+
+        private void Lunghezzacampi_Click(object sender, EventArgs e)
+        {
+            Lunghezzamassimacampi();
         }
     }
 }

@@ -31,6 +31,7 @@
             this.Aggiunta_mio_valore = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.BNCam = new System.Windows.Forms.Button();
+            this.Lunghezzacampi = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Aggiunta_mio_valore
@@ -46,9 +47,9 @@
             // listView1
             // 
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(511, 34);
+            this.listView1.Location = new System.Drawing.Point(867, 34);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(593, 158);
+            this.listView1.Size = new System.Drawing.Size(593, 576);
             this.listView1.TabIndex = 1;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -62,11 +63,23 @@
             this.BNCam.UseVisualStyleBackColor = true;
             this.BNCam.Click += new System.EventHandler(this.BNCam_Click);
             // 
+            // Lunghezzacampi
+            // 
+            this.Lunghezzacampi.AutoSize = true;
+            this.Lunghezzacampi.Location = new System.Drawing.Point(38, 146);
+            this.Lunghezzacampi.Name = "Lunghezzacampi";
+            this.Lunghezzacampi.Size = new System.Drawing.Size(188, 32);
+            this.Lunghezzacampi.TabIndex = 3;
+            this.Lunghezzacampi.Text = "Lunghezza campi";
+            this.Lunghezzacampi.UseVisualStyleBackColor = true;
+            this.Lunghezzacampi.Click += new System.EventHandler(this.Lunghezzacampi_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1130, 653);
+            this.ClientSize = new System.Drawing.Size(1472, 653);
+            this.Controls.Add(this.Lunghezzacampi);
             this.Controls.Add(this.BNCam);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.Aggiunta_mio_valore);
@@ -74,6 +87,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -82,6 +96,7 @@
         private System.Windows.Forms.Button Aggiunta_mio_valore;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button BNCam;
+        private System.Windows.Forms.Button Lunghezzacampi;
     }
 }
 
