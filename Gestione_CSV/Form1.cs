@@ -14,9 +14,12 @@ namespace Gestione_CSV
 {
     public partial class Form1 : Form
     {
+        public int a;
         public Form1()
         {
             InitializeComponent();
+            VisualizzaCSV();
+            a = 0;
 
         }
 
@@ -28,8 +31,6 @@ namespace Gestione_CSV
         }
 
         Random rnd = new Random();
-
-
 
         #region visulizzare il file CSV in una listview
         public void VisualizzaCSV()
@@ -51,11 +52,6 @@ namespace Gestione_CSV
                     listView1.Items.Add(item);
                 }
             }
-        }
-
-        private void Visualizza_Click(object sender, EventArgs e)
-        {
-            VisualizzaCSV();
         }
         #endregion
 
@@ -104,7 +100,7 @@ namespace Gestione_CSV
         #endregion
 
         #region Funzione 3
-        public void Lunghezzamassimacampi()
+        public int Lunghezzamassimacampi()
         {
             int max = 0;
             listView1.Clear();
@@ -120,12 +116,14 @@ namespace Gestione_CSV
                     }
                 }
                 MessageBox.Show("La lunghezza massima dei campi è " + (max.ToString()));
+
+                return max;
             }
         }
 
         private void Lunghezzacampi_Click(object sender, EventArgs e)
         {
-            Lunghezzamassimacampi();
+           int a = Lunghezzamassimacampi();
         }
         #endregion
         /*
@@ -147,45 +145,55 @@ namespace Gestione_CSV
         }
         */
 
-
-        //funzione per rendere la dimensione delle righe fissa andando a modificare il file originale inserendo dei punti per pareggiare la lunghezza, la lunghezza delle righe è data dalla riga più lnga nel file csv
         #region Funzione 4
-        public int LunghezzaMassimaRiga()
+        //inserire in ogni record un numero di spazi necessari a rendere fissa la dimensione di tutti i record, senza perdere informazioni, la dimensione viene presa dalla righa più lunga del csv. usando il comando padright
+        public void Dimfissal(int lmax)
         {
-            int max = 0;
-            using (StreamReader sr = new StreamReader(FileName))
+            int dim = 0;
+            string[] ele = new string[600];
+            using (StreamReader sr = new StreamReader(FileName)) 
             {
-                while (sr.Peek() != -1)
+                string b = sr.ReadLine();
+
+                string y = "";
+
+                while (b != null)
                 {
-                    string a = sr.ReadLine();
-                    string[] campi = a.Split(';');
-                    for (int i = 0; i < campi.Length; i++)
+                    int dif = lmax - b.Length;
+                    for (int i = 0; i < dif; i++)
                     {
-                        if (campi[i].Length > max)
-                        {
-                            max = campi[i].Length;
-                        }
+                        y = y + ".";
                     }
+                    ele[dim] = b+y;
+
+                     b = sr.ReadLine();
+                    dim++;
+                }
+
+                sr.Close();
+            }
+          
+    
+
+            using (StreamWriter sw = new StreamWriter(FileName))
+            {
+                dim = 0;
+
+                while (ele[dim]!= null)
+                {
+                    sw.WriteLine(ele[dim]);
+                    dim++;
                 }
             }
-            return max;
         }
-        
-
-
-
-
-
-
-
+              
         private void Dimfissa_Click(object sender, EventArgs e)
         {
-            LunghezzaMassimaRiga();       
+            Dimfissal(a);
         }
         #endregion
 
         #region Funzione 6
-        //Visualizzare dei dati mostrando tre campi significativi a scelta comune provincia e identificatore nella view list;ù
         public void VisualizzaDatiSignificativi()
         {
             listView1.Clear();
