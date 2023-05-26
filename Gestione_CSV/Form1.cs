@@ -147,49 +147,39 @@ namespace Gestione_CSV
 
         #region Funzione 4
         //inserire in ogni record un numero di spazi necessari a rendere fissa la dimensione di tutti i record, senza perdere informazioni, la dimensione viene presa dalla righa più lunga del csv. usando il comando padright
-        public void Dimfissal(int lmax)
+        public void DimFissa()
         {
-            int dim = 0;
-            string[] ele = new string[600];
-            using (StreamReader sr = new StreamReader(FileName)) 
-            {
-                string b = sr.ReadLine();
+            string s;
+            int i = 0;
+            StreamReader reader = new StreamReader(FileName);
+            StreamWriter writer = new StreamWriter("bassanelli2.csv");
 
-                string y = "";
-
-                while (b != null)
-                {
-                    int dif = lmax - b.Length;
-                    for (int i = 0; i < dif; i++)
-                    {
-                        y = y + ".";
-                    }
-                    ele[dim] = b+y;
-
-                     b = sr.ReadLine();
-                    dim++;
-                }
-
-                sr.Close();
-            }
           
-    
-
-            using (StreamWriter sw = new StreamWriter(FileName))
+            s = reader.ReadLine();
+            while (s != null)
             {
-                dim = 0;
-
-                while (ele[dim]!= null)
+                if (i != 0)
                 {
-                    sw.WriteLine(ele[dim]);
-                    dim++;
+                    writer.WriteLine(s.PadRight(70));
                 }
+                else
+                {
+                    writer.WriteLine(s);
+                }
+
+                s = reader.ReadLine();
+                i++;
             }
+
+            reader.Close();
+            writer.Close();
+
+            File.Delete(FileName);
         }
-              
+
         private void Dimfissa_Click(object sender, EventArgs e)
         {
-            Dimfissal(a);
+            
         }
         #endregion
 
