@@ -14,16 +14,14 @@ namespace Gestione_CSV
 {
     public partial class Form1 : Form
     {
-        public int a;
         public Form1()
         {
             InitializeComponent();
             VisualizzaCSV();
-            a = 0;
-
         }
 
         public string FileName = @"../../bassanelli.csv";
+        public string Filename2 = @"../../bassanelli2.csv";
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -55,13 +53,12 @@ namespace Gestione_CSV
         }
         #endregion
 
-        #region Funzione 1 
+        #region Funzione 1 aggiunta mio valore
         private void Aggiunta_mio_valore_Click(object sender, EventArgs e)
         {
             //StreamReader sr = new StreamReader(FileName);
             //string vs = sr.ReadLine();
             string[] lines = File.ReadAllLines(FileName);
-
 
             StreamWriter writer = new StreamWriter(FileName);
             writer.WriteLine(lines[0] + ";" + "Mio valore");
@@ -73,7 +70,7 @@ namespace Gestione_CSV
         }
         #endregion
 
-        #region Funzione 2
+        #region Funzione 2 conta campi
 
         private void BNCam_Click(object sender, EventArgs e)
         {
@@ -99,7 +96,7 @@ namespace Gestione_CSV
 
         #endregion
 
-        #region Funzione 3
+        #region Funzione 3 calcolare la lunghezza massima dei record presenti 
         public int Lunghezzamassimacampi()
         {
             int max = 0;
@@ -126,27 +123,8 @@ namespace Gestione_CSV
            int a = Lunghezzamassimacampi();
         }
         #endregion
-        /*
-        public void RicercaElemento()
-        {
-            string elemento = textBox1.Text;
-            using (StreamReader sr = new StreamReader(FileName))
-            {
-                string a = sr.ReadLine();
-                string[] campi = a.Split(';');
-                for (int i = 0; i < campi.Length; i++)
-                {
-                    if (campi[i] == elemento)
-                    {
-                        MessageBox.Show("L'elemento è stato trovato");
-                    }
-                }
-            }
-        }
-        */
 
-        #region Funzione 4
-        //inserire in ogni record un numero di spazi necessari a rendere fissa la dimensione di tutti i record, senza perdere informazioni, la dimensione viene presa dalla righa più lunga del csv. usando il comando padright
+        #region Funzione 4 dimensione fissa 
         public void DimFissa()
         {
             string s;
@@ -160,7 +138,7 @@ namespace Gestione_CSV
             {
                 if (i != 0)
                 {
-                    writer.WriteLine(s.PadRight(70));
+                    writer.WriteLine(s.PadRight(300));
                 }
                 else
                 {
@@ -174,16 +152,40 @@ namespace Gestione_CSV
             reader.Close();
             writer.Close();
 
-            File.Delete(FileName);
+            File.Replace("bassanelli2.csv", FileName, "prova.csv");
         }
 
         private void Dimfissa_Click(object sender, EventArgs e)
         {
-            
+            DimFissa();
         }
         #endregion
 
-        #region Funzione 6
+        #region Funzione 5 Aggiungere un record in coda
+        //Aggiungere un record in coda usando le text box
+        public void Recordcoda(string comunetextBox1, string provinciatextBox2, string regionetextBox3, string nometextBox4, string annotextBox5, string datatextBox6, string identificatoretextBox7, string longitudinetextBox8, string latitudinetextBox9)
+        {
+            StreamReader reader = new StreamReader(Filename2);
+            StreamWriter writer = new StreamWriter(FileName);
+
+            string s = reader.ReadLine();
+            while (s != null)
+            {
+                writer.WriteLine(s);
+                s = reader.ReadLine();
+            }
+
+            writer.WriteLine(comunetextBox1 + ";" + provinciatextBox2 + ";" + regionetextBox3 + ";" + nometextBox4 + ";" + annotextBox5 + ";" + datatextBox6 + ";" + identificatoretextBox7 + ";" + longitudinetextBox8 + ";" + latitudinetextBox9);
+        }
+
+        private void recordcoda_Click(object sender, EventArgs e)
+        {
+            Recordcoda(comunetextBox1.Text, provinciatextBox2.Text, regionetextBox3.Text, nometextBox4.Text, annotextBox5.Text, datatextBox6.Text, identificatoretextBox7.Text, longitudinetextBox8.Text, latitutinetextBox9.Text);
+        }
+
+        #endregion
+
+        #region Funzione 6 campi signifiacativi
         public void VisualizzaDatiSignificativi()
         {
             listView1.Clear();
@@ -212,5 +214,40 @@ namespace Gestione_CSV
             VisualizzaDatiSignificativi();
         }
         #endregion
+
+
+        /*
+        public void RicercaElemento()
+        {
+            string elemento = textBox1.Text;
+            using (StreamReader sr = new StreamReader(FileName))
+            {
+                string a = sr.ReadLine();
+                string[] campi = a.Split(';');
+                for (int i = 0; i < campi.Length; i++)
+                {
+                    if (campi[i] == elemento)
+                    {
+                        MessageBox.Show("L'elemento è stato trovato");
+                    }
+                }
+            }
+        }
+        */
+
+        #region Funzioni extra
+        private void Refresh_Click(object sender, EventArgs e)
+        {
+            VisualizzaCSV();
+        }
+
+
+
+        #endregion
+
+        private void latidutinetextBox9_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
