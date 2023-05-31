@@ -35,7 +35,7 @@
             this.Lunghezzacampi = new System.Windows.Forms.Button();
             this.Dimfissa = new System.Windows.Forms.Button();
             this.Significativi = new System.Windows.Forms.Button();
-            this.Refresh = new System.Windows.Forms.Button();
+            this.reload = new System.Windows.Forms.Button();
             this.comunetextBox1 = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.provinciatextBox2 = new System.Windows.Forms.TextBox();
@@ -58,6 +58,8 @@
             this.dataora = new System.Windows.Forms.Label();
             this.ricerca = new System.Windows.Forms.Button();
             this.ricercatextBox10 = new System.Windows.Forms.TextBox();
+            this.canclogicatextBox11 = new System.Windows.Forms.TextBox();
+            this.canclogica = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Aggiunta_mio_valore
@@ -127,16 +129,16 @@
             this.Significativi.UseVisualStyleBackColor = true;
             this.Significativi.Click += new System.EventHandler(this.Significativi_Click);
             // 
-            // Refresh
+            // reload
             // 
-            this.Refresh.Location = new System.Drawing.Point(45, 42);
-            this.Refresh.Margin = new System.Windows.Forms.Padding(4);
-            this.Refresh.Name = "Refresh";
-            this.Refresh.Size = new System.Drawing.Size(251, 39);
-            this.Refresh.TabIndex = 7;
-            this.Refresh.Text = "Refresh LIstView";
-            this.Refresh.UseVisualStyleBackColor = true;
-            this.Refresh.Click += new System.EventHandler(this.Refresh_Click);
+            this.reload.Location = new System.Drawing.Point(45, 42);
+            this.reload.Margin = new System.Windows.Forms.Padding(4);
+            this.reload.Name = "reload";
+            this.reload.Size = new System.Drawing.Size(251, 39);
+            this.reload.TabIndex = 7;
+            this.reload.Text = "Refresh LIstView";
+            this.reload.UseVisualStyleBackColor = true;
+            this.reload.Click += new System.EventHandler(this.Reload_Click);
             // 
             // comunetextBox1
             // 
@@ -324,11 +326,32 @@
             this.ricercatextBox10.Size = new System.Drawing.Size(251, 22);
             this.ricercatextBox10.TabIndex = 30;
             // 
+            // canclogicatextBox11
+            // 
+            this.canclogicatextBox11.Location = new System.Drawing.Point(612, 182);
+            this.canclogicatextBox11.Multiline = true;
+            this.canclogicatextBox11.Name = "canclogicatextBox11";
+            this.canclogicatextBox11.Size = new System.Drawing.Size(251, 22);
+            this.canclogicatextBox11.TabIndex = 32;
+            // 
+            // canclogica
+            // 
+            this.canclogica.Location = new System.Drawing.Point(612, 136);
+            this.canclogica.Margin = new System.Windows.Forms.Padding(4);
+            this.canclogica.Name = "canclogica";
+            this.canclogica.Size = new System.Drawing.Size(251, 39);
+            this.canclogica.TabIndex = 31;
+            this.canclogica.Text = "Cancellazione logica";
+            this.canclogica.UseVisualStyleBackColor = true;
+            this.canclogica.Click += new System.EventHandler(this.canclogica_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.canclogicatextBox11);
+            this.Controls.Add(this.canclogica);
             this.Controls.Add(this.ricercatextBox10);
             this.Controls.Add(this.ricerca);
             this.Controls.Add(this.dataora);
@@ -350,7 +373,7 @@
             this.Controls.Add(this.latitutinetextBox9);
             this.Controls.Add(this.provinciatextBox2);
             this.Controls.Add(this.comunetextBox1);
-            this.Controls.Add(this.Refresh);
+            this.Controls.Add(this.reload);
             this.Controls.Add(this.Significativi);
             this.Controls.Add(this.Dimfissa);
             this.Controls.Add(this.Lunghezzacampi);
@@ -374,7 +397,7 @@
         private System.Windows.Forms.Button Lunghezzacampi;
         private System.Windows.Forms.Button Dimfissa;
         private System.Windows.Forms.Button Significativi;
-        private System.Windows.Forms.Button Refresh;
+        private System.Windows.Forms.Button reload;
         private System.Windows.Forms.TextBox comunetextBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TextBox provinciatextBox2;
@@ -397,6 +420,8 @@
         private System.Windows.Forms.Label dataora;
         private System.Windows.Forms.Button ricerca;
         private System.Windows.Forms.TextBox ricercatextBox10;
+        private System.Windows.Forms.TextBox canclogicatextBox11;
+        private System.Windows.Forms.Button canclogica;
     }
 }
 

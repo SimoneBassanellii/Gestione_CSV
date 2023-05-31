@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Security.Policy;
+//using static System.Net.WebRequestMethods;
 
 namespace Gestione_CSV
 {
@@ -64,7 +65,7 @@ namespace Gestione_CSV
             writer.WriteLine(lines[0] + ";" + "Mio valore");
             for (int i = 0; i < lines.Length; i++)
             {
-                writer.WriteLine(lines[i] + ";" + rnd.Next(10, 21)+";0");
+                writer.WriteLine(lines[i] + ";" + rnd.Next(10, 21)+";1");
             }
             writer.Close();
         }
@@ -79,7 +80,6 @@ namespace Gestione_CSV
 
         public void ContaCampi()
         {
-            listView1.Clear();
             using (StreamReader sr = new StreamReader(FileName))
             {
                 int n = 0;
@@ -100,7 +100,6 @@ namespace Gestione_CSV
         public int Lunghezzamassimacampi()
         {
             int max = 0;
-            listView1.Clear();
             using (StreamReader sr = new StreamReader(FileName))
             {
                 string a = sr.ReadLine();
@@ -255,8 +254,51 @@ namespace Gestione_CSV
         }
         #endregion
 
+        #region Funzione 9 Cancellazione logica di un record a scelta 
+        public void CancLogica()
+        {
+            StreamReader reader = new StreamReader(FileName);
+            StreamWriter writer = new StreamWriter("bassanelli2.csv");
+            string s = reader.ReadLine();
+            string a = "";
+            while (s != null)
+            {
+                string[] campi = s.Split(';');
+                if (campi[6] == canclogicatextBox11.Text)
+                {
+                    if (campi[campi.Length - 1] == "1")
+                    {
+                        for (int i = 0; i < campi.Length; i++)
+                        {
+                            if (i == campi.Length - 1)
+                            {
+                                s = s + campi[i];
+                            }
+                            else
+                            {
+                                s = s + campi[i] + ";";
+                            }
+                        }
+                    }
+                }     
+                writer.WriteLine(s);
+                s = reader.ReadLine();
+            }
+            reader.Close();
+            writer.Close();
+            File.Replace("bassanelli2.csv", FileName, "prova.csv");
+        }
+        
+       
+
+        private void canclogica_Click(object sender, EventArgs e)
+        {
+            CancLogica();
+        }
+        #endregion
+
         #region Funzioni extra
-        private void Refresh_Click(object sender, EventArgs e)
+        private void Reload_Click(object sender, EventArgs e)
         {
             VisualizzaCSV();
         }
