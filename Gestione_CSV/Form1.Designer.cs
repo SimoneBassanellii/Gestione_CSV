@@ -56,6 +56,8 @@
             this.recordcoda = new System.Windows.Forms.Button();
             this.datatextBox6 = new System.Windows.Forms.TextBox();
             this.dataora = new System.Windows.Forms.Label();
+            this.ricerca = new System.Windows.Forms.Button();
+            this.ricercatextBox10 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Aggiunta_mio_valore
@@ -303,11 +305,32 @@
             this.dataora.TabIndex = 28;
             this.dataora.Text = "Data e ora ";
             // 
+            // ricerca
+            // 
+            this.ricerca.Location = new System.Drawing.Point(612, 42);
+            this.ricerca.Margin = new System.Windows.Forms.Padding(4);
+            this.ricerca.Name = "ricerca";
+            this.ricerca.Size = new System.Drawing.Size(251, 39);
+            this.ricerca.TabIndex = 29;
+            this.ricerca.Text = "Ricerca ";
+            this.ricerca.UseVisualStyleBackColor = true;
+            this.ricerca.Click += new System.EventHandler(this.ricerca_Click);
+            // 
+            // ricercatextBox10
+            // 
+            this.ricercatextBox10.Location = new System.Drawing.Point(612, 88);
+            this.ricercatextBox10.Multiline = true;
+            this.ricercatextBox10.Name = "ricercatextBox10";
+            this.ricercatextBox10.Size = new System.Drawing.Size(251, 22);
+            this.ricercatextBox10.TabIndex = 30;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.ricercatextBox10);
+            this.Controls.Add(this.ricerca);
             this.Controls.Add(this.dataora);
             this.Controls.Add(this.datatextBox6);
             this.Controls.Add(this.recordcoda);
@@ -372,6 +395,8 @@
         private System.Windows.Forms.Button recordcoda;
         private System.Windows.Forms.TextBox datatextBox6;
         private System.Windows.Forms.Label dataora;
+        private System.Windows.Forms.Button ricerca;
+        private System.Windows.Forms.TextBox ricercatextBox10;
     }
 }
 

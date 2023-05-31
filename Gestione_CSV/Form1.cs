@@ -162,7 +162,6 @@ namespace Gestione_CSV
         #endregion
 
         #region Funzione 5 Aggiungere un record in coda
-        //Aggiungere un record in coda usando le text box
         public void Recordcoda(string comunetextBox1, string provinciatextBox2, string regionetextBox3, string nometextBox4, string annotextBox5, string datatextBox6, string identificatoretextBox7, string longitudinetextBox8, string latitudinetextBox9)
         {
             StreamReader reader = new StreamReader(Filename2);
@@ -176,13 +175,15 @@ namespace Gestione_CSV
             }
 
             writer.WriteLine(comunetextBox1 + ";" + provinciatextBox2 + ";" + regionetextBox3 + ";" + nometextBox4 + ";" + annotextBox5 + ";" + datatextBox6 + ";" + identificatoretextBox7 + ";" + longitudinetextBox8 + ";" + latitudinetextBox9);
+            
+            reader.Close();
+            writer.Close();
         }
 
         private void recordcoda_Click(object sender, EventArgs e)
         {
             Recordcoda(comunetextBox1.Text, provinciatextBox2.Text, regionetextBox3.Text, nometextBox4.Text, annotextBox5.Text, datatextBox6.Text, identificatoretextBox7.Text, longitudinetextBox8.Text, latitutinetextBox9.Text);
         }
-
         #endregion
 
         #region Funzione 6 campi signifiacativi
@@ -215,39 +216,57 @@ namespace Gestione_CSV
         }
         #endregion
 
-
-        /*
-        public void RicercaElemento()
+        #region Funzione 7 Ricerca per campo a scelta 
+        public void RicercaPerCampo()
         {
-            string elemento = textBox1.Text;
+            listView1.Clear();
             using (StreamReader sr = new StreamReader(FileName))
             {
                 string a = sr.ReadLine();
                 string[] campi = a.Split(';');
                 for (int i = 0; i < campi.Length; i++)
                 {
-                    if (campi[i] == elemento)
+                    listView1.Columns.Add(campi[i]);
+                }
+                while (sr.Peek() != -1)
+                {
+                    string b = sr.ReadLine();
+                    string[] campi2 = b.Split(';');
+                    if (campi2[0] == ricercatextBox10.Text)
                     {
-                        MessageBox.Show("L'elemento è stato trovato");
+                        ListViewItem item = new ListViewItem(campi2[0]);
+                        item.SubItems.Add(campi2[1]);
+                        item.SubItems.Add(campi2[2]);
+                        item.SubItems.Add(campi2[3]);
+                        item.SubItems.Add(campi2[4]);
+                        item.SubItems.Add(campi2[5]);
+                        item.SubItems.Add(campi2[6]);
+                        item.SubItems.Add(campi2[7]);
+                        item.SubItems.Add(campi2[8]);
+                        listView1.Items.Add(item);
                     }
                 }
             }
+
         }
-        */
+        private void ricerca_Click(object sender, EventArgs e)
+        {
+            RicercaPerCampo();
+        }
+        #endregion
 
         #region Funzioni extra
         private void Refresh_Click(object sender, EventArgs e)
         {
             VisualizzaCSV();
         }
-
-
-
         #endregion
 
         private void latidutinetextBox9_TextChanged(object sender, EventArgs e)
         {
 
         }
+
+       
     }
 }
