@@ -254,6 +254,13 @@ namespace Gestione_CSV
         }
         #endregion
 
+        #region Funzione 8 modificare un record
+        public void ModificaRecord()
+        {
+
+        }
+        #endregion
+
         #region Funzione 9 Cancellazione logica di un record a scelta 
         public void CancLogica()
         {
@@ -266,18 +273,16 @@ namespace Gestione_CSV
                 string[] campi = s.Split(';');
                 if (campi[6] == canclogicatextBox11.Text)
                 {
-                    if (campi[campi.Length - 1] == "1")
+                    campi[campi.Length - 1] = "0";
+                    for (int i = 0; i < campi.Length; i++)
                     {
-                        for (int i = 0; i < campi.Length; i++)
+                        if (i == campi.Length - 1)
                         {
-                            if (i == campi.Length - 1)
-                            {
-                                s = s + campi[i];
-                            }
-                            else
-                            {
-                                s = s + campi[i] + ";";
-                            }
+                            s = s + campi[i];
+                        }
+                        else
+                        {
+                            s = s + campi[i] + ";";
                         }
                     }
                 }     
@@ -308,7 +313,5 @@ namespace Gestione_CSV
         {
 
         }
-
-       
     }
 }

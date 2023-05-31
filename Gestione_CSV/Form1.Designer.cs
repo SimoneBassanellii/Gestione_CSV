@@ -60,6 +60,10 @@
             this.ricercatextBox10 = new System.Windows.Forms.TextBox();
             this.canclogicatextBox11 = new System.Windows.Forms.TextBox();
             this.canclogica = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.modificatextBox12 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Aggiunta_mio_valore
@@ -309,7 +313,7 @@
             // 
             // ricerca
             // 
-            this.ricerca.Location = new System.Drawing.Point(612, 42);
+            this.ricerca.Location = new System.Drawing.Point(326, 111);
             this.ricerca.Margin = new System.Windows.Forms.Padding(4);
             this.ricerca.Name = "ricerca";
             this.ricerca.Size = new System.Drawing.Size(251, 39);
@@ -320,7 +324,7 @@
             // 
             // ricercatextBox10
             // 
-            this.ricercatextBox10.Location = new System.Drawing.Point(612, 88);
+            this.ricercatextBox10.Location = new System.Drawing.Point(326, 157);
             this.ricercatextBox10.Multiline = true;
             this.ricercatextBox10.Name = "ricercatextBox10";
             this.ricercatextBox10.Size = new System.Drawing.Size(251, 22);
@@ -328,7 +332,7 @@
             // 
             // canclogicatextBox11
             // 
-            this.canclogicatextBox11.Location = new System.Drawing.Point(612, 182);
+            this.canclogicatextBox11.Location = new System.Drawing.Point(326, 251);
             this.canclogicatextBox11.Multiline = true;
             this.canclogicatextBox11.Name = "canclogicatextBox11";
             this.canclogicatextBox11.Size = new System.Drawing.Size(251, 22);
@@ -336,7 +340,7 @@
             // 
             // canclogica
             // 
-            this.canclogica.Location = new System.Drawing.Point(612, 136);
+            this.canclogica.Location = new System.Drawing.Point(326, 205);
             this.canclogica.Margin = new System.Windows.Forms.Padding(4);
             this.canclogica.Name = "canclogica";
             this.canclogica.Size = new System.Drawing.Size(251, 39);
@@ -345,11 +349,51 @@
             this.canclogica.UseVisualStyleBackColor = true;
             this.canclogica.Click += new System.EventHandler(this.canclogica_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(583, 257);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(264, 16);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Inserire l\'identificatoren di OpenStreamMAp";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(583, 163);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(142, 16);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "Inserire il primo campo";
+            // 
+            // modificatextBox12
+            // 
+            this.modificatextBox12.Location = new System.Drawing.Point(326, 346);
+            this.modificatextBox12.Multiline = true;
+            this.modificatextBox12.Name = "modificatextBox12";
+            this.modificatextBox12.Size = new System.Drawing.Size(251, 22);
+            this.modificatextBox12.TabIndex = 36;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(326, 300);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(251, 39);
+            this.button1.TabIndex = 35;
+            this.button1.Text = "Modifica ";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
+            this.Controls.Add(this.modificatextBox12);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.canclogicatextBox11);
             this.Controls.Add(this.canclogica);
             this.Controls.Add(this.ricercatextBox10);
@@ -422,6 +466,10 @@
         private System.Windows.Forms.TextBox ricercatextBox10;
         private System.Windows.Forms.TextBox canclogicatextBox11;
         private System.Windows.Forms.Button canclogica;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox modificatextBox12;
+        private System.Windows.Forms.Button button1;
     }
 }
 
